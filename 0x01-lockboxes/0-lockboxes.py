@@ -22,7 +22,7 @@ def canUnlockAll(boxes):
     empty = 0
     for box in boxes:
         if len(box) == 0:
-            empty = empty + 1;
+            empty = empty + 1
     index = 0
     while index < len(current):
         value = boxes[current[index]]
