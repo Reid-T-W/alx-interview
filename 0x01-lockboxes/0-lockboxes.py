@@ -18,21 +18,20 @@ def canUnlockAll(boxes):
         return False
     for key in boxes[0]:
         current.append(key)
+    # Counting empty boxes in boxes:
+    empty = 0
+    for box in boxes:
+        if len(box) == 0:
+            empty = empty + 1;
     index = 0
     while index < len(current):
         value = boxes[current[index]]
-        if (len(value) == 0 and current[index] == size - 1):
-            # Randomly appended 0 since its always open
-            # Look for better ways
-            current.append(0)
-        elif (len(value) == 0):
-            pass
-        else:
+        if (len(value) != 0):
             for item in value:
                 if current.count(item) == 0:
                     current.append(item)
         index += 1
-    if len(boxes) == len(current):
+    if (len(boxes) - empty) == len(current):
         return True
     else:
         return False
