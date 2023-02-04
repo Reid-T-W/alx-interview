@@ -7,6 +7,9 @@ def canUnlockAll(boxes):
     Function for checking if all boxes
     are unlockable
     """
+    # Checking if the list is valid
+    if (type(boxes) != list):
+        return False
     open_close = []
     current = []
     size = len(boxes)
@@ -23,15 +26,17 @@ def canUnlockAll(boxes):
     if len(boxes[0]) == 0:
         return False
     for key in boxes[0]:
-        current.append(key)
+        if current.count(key) == 0 and key < size:
+            current.append(key)
 
     index = 0
     while index < len(current):
-        value = boxes[current[index]]
-        if (len(value) != 0):
-            for item in value:
-                if current.count(item) == 0:
-                    current.append(item)
+        if current[index] < size:
+            value = boxes[current[index]]
+            if (len(value) != 0):
+                for item in value:
+                    if current.count(item) == 0 and item < size:
+                        current.append(item)
         index += 1
     # Appending 0 to current, so that the comparison can be
     # done correctly. This does not have any logical issues
