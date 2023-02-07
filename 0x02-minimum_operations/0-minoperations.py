@@ -3,7 +3,7 @@
 # import math
 
 
-def minOperations(n) -> int:
+def minOperations(n: int) -> int:
     """
     Minimum number of copy and paste operations
     required to get n numbers of H
