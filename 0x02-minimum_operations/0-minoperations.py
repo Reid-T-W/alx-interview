@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Minimum Operations Problem """
-import math
 
 
 def minOperations(n: int) -> int:
@@ -10,10 +9,8 @@ def minOperations(n: int) -> int:
     """
     if n <= 0:
         return 0
-    if (n == math.inf or n == -math.inf):
-        return 0
     if n == 1:
-        return 1
+        return 0
     else:
         h_count = 1
         copied_h = 1
