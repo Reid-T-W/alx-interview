@@ -10,6 +10,11 @@ pat = re.compile(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} - "
                  r"\[[0-9]{4}-[0-9]{2}-[0-9]{1,2} [0-9]{2}:[0-9]{2}:"
                  r"[0-9]{2}.[0-9]{6}\] "
                  r"\"GET \/projects\/260 HTTP\/1.1\" [0-9]{3} [0-9]*")
+
+pat_no_status = re.compile(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} - "
+                           r"\[[0-9]{4}-[0-9]{2}-[0-9]{1,2} [0-9]{2}:[0-9]{2}:"
+                           r"[0-9]{2}.[0-9]{6}\] "
+                           r"\"GET \/projects\/260 HTTP\/1.1\" [0-9]*")
 total_size = 0
 status_code_dict = {}
 status_code_dict = defaultdict(lambda: 0, status_code_dict)
@@ -22,17 +27,28 @@ for line in sys.stdin:
         file_size = int(params[-1])
         status = int(params[-2])
         counter = counter + 1
+    elif re.match(pat_no_status, line):
+        # Extract file size
+        params = line.split()
+        file_size = int(params[-1])
+        counter = counter + 1
     else:
         counter = counter + 1
         continue
 
     total_size = total_size + file_size
-    status_code_dict[status] = status_code_dict[status] + 1
+    try:
+        status_code_dict[status] = status_code_dict[status] + 1
+    except Exception:
+        pass
     if (counter % 10 == 0):
         print("File size: {}".format(total_size))
-        status_code_dict_sorted = sorted(status_code_dict.items())
-        for code, count in dict(status_code_dict_sorted).items():
-            print("{}: {}".format(code, count))
+        try:
+            status_code_dict_sorted = sorted(status_code_dict.items())
+            for code, count in dict(status_code_dict_sorted).items():
+                print("{}: {}".format(code, count))
+        except Exception:
+            pass
 
 # This is required in cases were the total number of logs is not
 # divisible by 10
