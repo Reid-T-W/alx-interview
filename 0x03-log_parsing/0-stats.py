@@ -29,7 +29,7 @@ for line in sys.stdin:
     total_size = total_size + file_size
     status_code_dict[status] = status_code_dict[status] + 1
     if (counter % 10 == 0):
-        print(f"File size: {total_size}")
+        print("File size: {}".format(total_size))
         status_code_dict_sorted = sorted(status_code_dict.items())
         for code, count in dict(status_code_dict_sorted).items():
-            print(f"{code}: {count}")
+            print("{}: {}".format(code, count))
