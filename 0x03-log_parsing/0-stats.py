@@ -6,7 +6,10 @@ from collections import defaultdict
 
 
 # compiling the correct pattern
-pat = re.compile(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} - \[[0-9]{4}-[0-9]{2}-[0-9]{1,2} [0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{6}\] \"GET \/projects\/260 HTTP\/1.1\" [0-9]{3} [0-9]*")
+pat = re.compile(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} - "
+                 r"\[[0-9]{4}-[0-9]{2}-[0-9]{1,2} [0-9]{2}:[0-9]{2}:"
+                 r"[0-9]{2}.[0-9]{6}\] "
+                 r"\"GET \/projects\/260 HTTP\/1.1\" [0-9]{3} [0-9]*")
 total_size = 0
 status_code_dict = {}
 status_code_dict = defaultdict(lambda: 0, status_code_dict)
