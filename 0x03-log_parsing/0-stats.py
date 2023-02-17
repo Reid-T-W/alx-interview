@@ -33,3 +33,14 @@ for line in sys.stdin:
         status_code_dict_sorted = sorted(status_code_dict.items())
         for code, count in dict(status_code_dict_sorted).items():
             print(f"{code}: {count}")
+
+# This is required in cases were the total number of logs is not
+# divisible by 10
+# Example if their are 19 logs, the first ten will be handled with
+# the above code, but the loop will exit without processing the
+# remaining 9, the code below prints out the summary of the 9 logs.
+if (counter % 10 != 0):
+    print(f"File size: {total_size}")
+    status_code_dict_sorted = sorted(status_code_dict.items())
+    for code, count in dict(status_code_dict_sorted).items():
+        print(f"{code}: {count}")
