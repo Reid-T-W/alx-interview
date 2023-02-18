@@ -47,7 +47,8 @@ try:
             try:
                 status_code_dict_sorted = sorted(status_code_dict.items())
                 for code, count in dict(status_code_dict_sorted).items():
-                    print("{}: {}".format(code, count))
+                    if count != 0:
+                        print("{}: {}".format(code, count))
             except Exception:
                 pass
 
@@ -64,4 +65,5 @@ finally:
         print("File size: {}".format(total_size))
         status_code_dict_sorted = sorted(status_code_dict.items())
         for code, count in dict(status_code_dict_sorted).items():
-            print("{}: {}".format(code, count))
+            if count != 0:
+                print("{}: {}".format(code, count))
