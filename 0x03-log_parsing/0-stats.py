@@ -12,6 +12,7 @@ counter = 0
 
 try:
     for line in sys.stdin:
+        # print(line)
         tokens = line.split()
         if len(tokens) != 9:
             continue
@@ -25,13 +26,13 @@ try:
             pass
 
         if (counter == 10):
-            counter = 0
             try:
                 print("File size: {}".format(total_size))
                 status_code_dict_sorted = sorted(status_code_dict.items())
                 for code, count in dict(status_code_dict_sorted).items():
                     if count != 0:
                         print("{}: {}".format(code, count))
+                counter = 0
             except Exception:
                 pass
 
