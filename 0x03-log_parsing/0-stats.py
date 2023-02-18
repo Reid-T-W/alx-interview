@@ -14,7 +14,7 @@ try:
     for line in sys.stdin:
         # print(line)
         tokens = line.split()
-        if len(tokens) != 9:
+        if len(tokens) < 2:
             continue
         try:
             file_size = int(tokens[-1])
