@@ -29,9 +29,6 @@ try:
                 if count != 0:
                     print("{}: {}".format(code, count))
             counter = 0
-except Exception:
-    pass
-
 finally:
     # This is required in cases were the total number of logs is not
     # divisible by 10
