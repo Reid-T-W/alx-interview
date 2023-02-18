@@ -21,7 +21,8 @@ if __name__ == "__main__":
             status = int(tokens[-2])
             counter = counter + 1
             total_size = total_size + file_size
-            status_code_dict[status] = status_code_dict[status] + 1
+            if status in status_code_dict:
+                status_code_dict[status] += 1
 
             if (counter == 10):
                 print("File size: {}".format(total_size))
