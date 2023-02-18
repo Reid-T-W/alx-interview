@@ -16,27 +16,20 @@ try:
         tokens = line.split()
         if len(tokens) < 2:
             continue
-        try:
-            file_size = int(tokens[-1])
-            status = int(tokens[-2])
-            counter = counter + 1
-            total_size = total_size + file_size
-            status_code_dict[status] = status_code_dict[status] + 1
-        except Exception:
-            pass
+        file_size = int(tokens[-1])
+        status = int(tokens[-2])
+        counter = counter + 1
+        total_size = total_size + file_size
+        status_code_dict[status] = status_code_dict[status] + 1
 
         if (counter == 10):
-            try:
-                print("File size: {}".format(total_size))
-                status_code_dict_sorted = sorted(status_code_dict.items())
-                for code, count in dict(status_code_dict_sorted).items():
-                    if count != 0:
-                        print("{}: {}".format(code, count))
-                counter = 0
-            except Exception:
-                pass
-
-except KeyboardInterrupt:
+            print("File size: {}".format(total_size))
+            status_code_dict_sorted = sorted(status_code_dict.items())
+            for code, count in dict(status_code_dict_sorted).items():
+                if count != 0:
+                    print("{}: {}".format(code, count))
+            counter = 0
+except Exception:
     pass
 
 finally:
@@ -45,12 +38,9 @@ finally:
     # Example if their are 19 logs, the first ten will be handled with
     # the above code, but the loop will exit without processing the
     # remaining 9, the code below prints out the summary of the 9 logs.
-    if (counter != 0):
-        try:
-            print("File size: {}".format(total_size))
-            status_code_dict_sorted = sorted(status_code_dict.items())
-            for code, count in dict(status_code_dict_sorted).items():
-                if count != 0:
-                    print("{}: {}".format(code, count))
-        except Exception:
-            pass
+    if counter != 0:
+        print("File size: {}".format(total_size))
+        status_code_dict_sorted = sorted(status_code_dict.items())
+        for code, count in dict(status_code_dict_sorted).items():
+            if count != 0:
+                print("{}: {}".format(code, count))
