@@ -24,7 +24,8 @@ try:
         except Exception:
             pass
 
-        if (counter % 10 == 0):
+        if (counter == 10):
+            counter = 0
             print("File size: {}".format(total_size))
             try:
                 status_code_dict_sorted = sorted(status_code_dict.items())
@@ -43,7 +44,7 @@ finally:
     # Example if their are 19 logs, the first ten will be handled with
     # the above code, but the loop will exit without processing the
     # remaining 9, the code below prints out the summary of the 9 logs.
-    if (counter % 10 != 0):
+    if (counter != 0):
         print("File size: {}".format(total_size))
         try:
             status_code_dict_sorted = sorted(status_code_dict.items())
