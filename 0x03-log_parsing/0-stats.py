@@ -61,3 +61,5 @@ if __name__ == "__main__":
                         print("{}: {}".format(code, count))
             except Exception:
                 pass
+        if total_size == 0:
+            print("File size: {}".format(total_size))
