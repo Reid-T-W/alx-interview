@@ -23,7 +23,7 @@ if __name__ == "__main__":
             try:
                 status = int(tokens[-2])
             except Exception:
-                pass
+                status = None
             counter = counter + 1
             total_size = total_size + file_size
             try:
