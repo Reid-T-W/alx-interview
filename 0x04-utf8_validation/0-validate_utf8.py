@@ -8,8 +8,8 @@ def validUTF8(data):
     """
     Determines  if a given data set represents a valid UTF-8 encoding
     """
-    valid = False
     for item in data:
+        valid = False
         # Extracting the least significant 8 bits
         # The bits are converted to string in order
         # to be able to extract them and perform length
@@ -24,10 +24,14 @@ def validUTF8(data):
         # does not display it, hence the length of the bits
         # reduce to 7, but if the leading bit is a one, python
         # displays it, making the length 8.
+        if len(str_binary) > 8:
+            valid = False
+            return valid
         if len(str_binary) != 8:
             remaining_zeros = 8 - len(str_binary)
             str_binary = '0' * remaining_zeros + str_binary
         if str_binary[0:2] == "10":
+            valid = False
             return valid
         elif str_binary[0:1] == "0":
             valid = True
