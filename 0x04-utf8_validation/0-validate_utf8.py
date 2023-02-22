@@ -8,7 +8,7 @@ def validUTF8(data):
     """
     Determines  if a given data set represents a valid UTF-8 encoding
     """
-    valid = None
+    valid = False
     for item in data:
         # Extracting the least significant 8 bits
         # The bits are converted to string in order
@@ -28,7 +28,6 @@ def validUTF8(data):
             remaining_zeros = 8 - len(str_binary)
             str_binary = '0' * remaining_zeros + str_binary
         if str_binary[0:2] == "10":
-            valid = False
             return valid
         elif str_binary[0:1] == "0":
             valid = True
