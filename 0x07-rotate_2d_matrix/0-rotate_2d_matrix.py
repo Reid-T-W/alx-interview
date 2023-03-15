@@ -4,8 +4,6 @@
 
 def rotate_2d_matrix(matrix):
     """ Given an nxn martix rotates it 90 degree clockwise """
-    stop = len(matrix) // 2
-
     # Transposing the matrix
     for row_ind, row in enumerate(matrix):
         for col_ind in range(row_ind, len(row)):
@@ -13,15 +11,14 @@ def rotate_2d_matrix(matrix):
                 temp = matrix[row_ind][col_ind]
                 matrix[row_ind][col_ind] = matrix[col_ind][row_ind]
                 matrix[col_ind][row_ind] = temp
-        if row_ind == stop:
+        if row_ind == len(matrix) // 2:
             break
 
     # Correctin the every row
     for row_ind, row in enumerate(matrix):
         end_index = len(row) - 1
         for col_ind in range(len(row)):
-            stop = len(row) // 2
-            if col_ind != stop:
+            if col_ind != len(row) // 2:
                 temp = matrix[row_ind][col_ind]
                 matrix[row_ind][col_ind] = matrix[row_ind][end_index]
                 matrix[row_ind][end_index] = temp
