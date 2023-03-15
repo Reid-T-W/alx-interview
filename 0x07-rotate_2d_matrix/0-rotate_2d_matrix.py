@@ -20,7 +20,8 @@ def rotate_2d_matrix(matrix):
     for row_ind, row in enumerate(matrix):
         end_index = len(row) - 1
         for col_ind in range(len(row)):
-            if col_ind != end_index:
+            stop = len(row) // 2
+            if col_ind != stop:
                 temp = matrix[row_ind][col_ind]
                 matrix[row_ind][col_ind] = matrix[row_ind][end_index]
                 matrix[row_ind][end_index] = temp
