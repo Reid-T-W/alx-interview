@@ -11,7 +11,7 @@ def rotate_2d_matrix(matrix):
                 temp = matrix[row_ind][col_ind]
                 matrix[row_ind][col_ind] = matrix[col_ind][row_ind]
                 matrix[col_ind][row_ind] = temp
-        if row_ind == len(matrix) // 2:
+        if row_ind == (len(matrix) // 2) + 1:
             break
 
     # Correctin the every row
