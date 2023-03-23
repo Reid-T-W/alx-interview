@@ -22,9 +22,9 @@ def makeChange(coins, total):
         if (coin % 2 == 0) == total_even_or_odd:
             # logic goes here
             # sort the list
-            sorted_coins = sorted(coins)
+            coins = sorted(coins)
             # Pointer to biggest number (last element of the list)
-            first_big = len(sorted_coins) - 1
+            first_big = len(coins) - 1
             # Pointer to second biggest number (second to the last element
             # on the list)
             second_big = first_big - 1
