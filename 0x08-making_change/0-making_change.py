@@ -36,21 +36,28 @@ def makeChange(coins, total):
             if total % coins[first_big] == 0:
                 return (total // coins[first_big])
             if check_even_or_odd(total) == 'odd':
-                if check_even_or_odd(coins[first_big]) != \
-                   check_even_or_odd(coins[second_big]):
-                    # logic here
-                    first_multiplier = total // coins[first_big]
-                    second_multiplier = (total - coins[first_big]) // \
-                        coins[second_big]
-                    return (first_multiplier + second_multiplier)
+                # odd + even = odd (since total is odd)
+                for _ in range(len(coins)):
+                    if check_even_or_odd(coins[first_big]) != \
+                      check_even_or_odd(coins[second_big]):
+                        # logic here
+                        first_multiplier = total // coins[first_big]
+                        second_multiplier = (total - coins[first_big]) // \
+                            coins[second_big]
+                        return (first_multiplier + second_multiplier)
+                    second_big -= 1
             elif check_even_or_odd(total) == 'even':
-                if check_even_or_odd(coins[first_big]) == \
-                  check_even_or_odd(coins[second_big]):
-                    # logic here
-                    first_multiplier = total // coins[first_big]
-                    second_multiplier = (total - coins[first_big]) // \
-                        coins[second_big]
-                    return (first_multiplier + second_multiplier)
-
+                # even + even = even
+                # odd + odd = even
+                # odd + even = odd (we don't want this since total is even)
+                for _ in range(len(coins)):
+                    if check_even_or_odd(coins[first_big]) == \
+                      check_even_or_odd(coins[second_big]):
+                        # logic here
+                        first_multiplier = total // coins[first_big]
+                        second_multiplier = (total - coins[first_big]) // \
+                            coins[second_big]
+                        return (first_multiplier + second_multiplier)
+                    second_big -= 1
             return 0
     return -1
