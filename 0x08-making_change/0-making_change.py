@@ -36,8 +36,9 @@ def makeChange(coins, total):
         if check_even_or_odd(total) == 'odd':
             # odd + even = odd (since total is odd)
             for _ in range(len(coins)):
-                if check_even_or_odd(coins[first_big]) != \
-                   check_even_or_odd(coins[second_big]):
+                if (check_even_or_odd(coins[first_big]) !=
+                   check_even_or_odd(coins[second_big])) \
+                   or coins[second_big] == 1 or coins[second_big] == 1:
                     # logic here
                     first_multiplier = total // coins[first_big]
                     second_multiplier = (total - coins[first_big]) // \
@@ -50,7 +51,8 @@ def makeChange(coins, total):
             # odd + even = odd (we don't want this since total is even)
             for _ in range(len(coins)):
                 if check_even_or_odd(coins[first_big]) == \
-                   check_even_or_odd(coins[second_big]):
+                   check_even_or_odd(coins[second_big]) \
+                   or coins[second_big] == 1 or coins[second_big] == 1:
                     # logic here
                     first_multiplier = total // coins[first_big]
                     second_multiplier = (total - coins[first_big]) // \
