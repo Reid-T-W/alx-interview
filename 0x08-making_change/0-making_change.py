@@ -13,6 +13,8 @@ def makeChange(coins, total):
     """ Find total number of coins required to get total"""
     if total <= 0:
         return 0
+    if len(coins) == 0:
+        return 0
     # Checking if total can be met with the coins we have
     # Check if total is odd or even
     total_even_or_odd = total % 2 == 0
