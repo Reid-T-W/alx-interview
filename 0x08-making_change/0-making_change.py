@@ -59,5 +59,4 @@ def makeChange(coins, total):
                             coins[second_big]
                         return (first_multiplier + second_multiplier)
                     second_big -= 1
-            return 0
     return -1
