@@ -19,44 +19,42 @@ def makeChange(coins, total):
     for coin in coins:
         # If this case is satisfied it means that at least
         # one coin is found that can help us get total
-        if (coin % 2 == 0) == total_even_or_odd:
-            # logic goes here
-            # sort the list
-            coins = sorted(coins)
-            # Pointer to biggest number (last element of the list)
-            first_big = len(coins) - 1
-            # Pointer to second biggest number (second to the last element
-            # on the list)
-            second_big = first_big - 1
-            if coins[first_big] > total:
-                first_big -= 1
+        # sort the list
+        coins = sorted(coins)
+        # Pointer to biggest number (last element of the list)
+        first_big = len(coins) - 1
+        # Pointer to second biggest number (second to the last element
+        # on the list)
+        second_big = first_big - 1
+        if coins[first_big] > total:
+            first_big -= 1
+            second_big -= 1
+        # Checking if only the first biggest element can give us the
+        # total
+        if total % coins[first_big] == 0:
+            return (total // coins[first_big])
+        if check_even_or_odd(total) == 'odd':
+            # odd + even = odd (since total is odd)
+            for _ in range(len(coins)):
+                if check_even_or_odd(coins[first_big]) != \
+                   check_even_or_odd(coins[second_big]):
+                    # logic here
+                    first_multiplier = total // coins[first_big]
+                    second_multiplier = (total - coins[first_big]) // \
+                        coins[second_big]
+                    return (first_multiplier + second_multiplier)
                 second_big -= 1
-            # Checking if only the first biggest element can give us the
-            # total
-            if total % coins[first_big] == 0:
-                return (total // coins[first_big])
-            if check_even_or_odd(total) == 'odd':
-                # odd + even = odd (since total is odd)
-                for _ in range(len(coins)):
-                    if check_even_or_odd(coins[first_big]) != \
-                      check_even_or_odd(coins[second_big]):
-                        # logic here
-                        first_multiplier = total // coins[first_big]
-                        second_multiplier = (total - coins[first_big]) // \
-                            coins[second_big]
-                        return (first_multiplier + second_multiplier)
-                    second_big -= 1
-            elif check_even_or_odd(total) == 'even':
-                # even + even = even
-                # odd + odd = even
-                # odd + even = odd (we don't want this since total is even)
-                for _ in range(len(coins)):
-                    if check_even_or_odd(coins[first_big]) == \
-                      check_even_or_odd(coins[second_big]):
-                        # logic here
-                        first_multiplier = total // coins[first_big]
-                        second_multiplier = (total - coins[first_big]) // \
-                            coins[second_big]
-                        return (first_multiplier + second_multiplier)
-                    second_big -= 1
+        elif check_even_or_odd(total) == 'even':
+            # even + even = even
+            # odd + odd = even
+            # odd + even = odd (we don't want this since total is even)
+            for _ in range(len(coins)):
+                if check_even_or_odd(coins[first_big]) == \
+                   check_even_or_odd(coins[second_big]):
+                    # logic here
+                    first_multiplier = total // coins[first_big]
+                    second_multiplier = (total - coins[first_big]) // \
+                        coins[second_big]
+                    return (first_multiplier + second_multiplier)
+                second_big -= 1
     return -1
