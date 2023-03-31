@@ -2,7 +2,7 @@
 """ Calculates the perimeter of an island """
 
 
-def populate_dict(dicti, i, j):
+def populate_dict(dicti, grid, i, j):
     """ populates dict with key 0 and 1 """
     if dicti.get(grid[i][j]):
         dicti.get(grid[i][j]).append(str(i) + str(j))
@@ -36,19 +36,19 @@ def island_perimeter(grid):
                 continue
             if grid[i][j] == 1:
                 if j + 1 < numberOfCols:
-                    populate_dict(dicti, i, j + 1)
+                    populate_dict(dicti, grid, i, j + 1)
                 else:
                     perimeter += 1
                 if j - 1 >= 0:
-                    populate_dict(dicti, i, j - 1)
+                    populate_dict(dicti, grid, i, j - 1)
                 else:
                     perimeter += 1
                 if i + 1 < numberOfRows:
-                    populate_dict(dicti, i + 1, j)
+                    populate_dict(dicti, grid, i + 1, j)
                 else:
                     perimeter += 1
                 if i - 1 >= 0:
-                    populate_dict(dicti, i - 1, j)
+                    populate_dict(dicti, grid, i - 1, j)
                 else:
                     perimeter += 1
                 # seen.add(str(i) + str(j))
@@ -70,5 +70,5 @@ def island_perimeter(grid):
 #     ]
 #     print(island_perimeter(grid))
 
-    # grid = [[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]
-    # print(island_perimeter(grid))
+#     grid = [[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]
+#     print(island_perimeter(grid))
