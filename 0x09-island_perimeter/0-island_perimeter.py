@@ -40,20 +40,20 @@ def island_perimeter(grid):
                 populate_dict(dicti, i + 1, j)
                 populate_dict(dicti, i - 1, j)
                 # seen.add(str(i) + str(j))
-    if (dicti.get(1) is None):
-        perimeter += 0
-    else:
+            if (dicti.get(1) is None):
+                perimeter += 0
+    if dicti.get(0) is not None:
         zeros = dicti.get(0)
         perimeter += len(zeros)
     return perimeter
 
 
-# if __name__ == "__main__":
-#     grid = [
-#         [0, 0, 0, 0, 0, 0],
-#         [0, 1, 0, 0, 0, 0],
-#         [0, 1, 0, 0, 0, 0],
-#         [0, 1, 1, 1, 0, 0],
-#         [0, 0, 0, 0, 0, 0]
-#     ]
-#     print(island_perimeter(grid))
+if __name__ == "__main__":
+    grid = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+    ]
+    print(island_perimeter(grid))
