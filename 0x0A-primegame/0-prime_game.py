@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Prime game with x rounds and n numbers """
-import math
 
 
 def isWinner(x, nums):
