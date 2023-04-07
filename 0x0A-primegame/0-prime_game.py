@@ -13,6 +13,8 @@ def isWinner(x, nums):
     Return:
         Winner of game
     """
+    if (x == 0 or len(nums) == 0):
+        return None
     # Get max n for nums and populate the is_prime array
     n = max(nums)
     # Iteration stops at n + 1 so that n is included
